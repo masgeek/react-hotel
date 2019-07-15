@@ -2,7 +2,7 @@ import React from 'react';
 
 import {List, Datagrid, TextField, DateField, EmailField, ImageField, EditButton} from 'react-admin';
 
-export const HotelList = props => (
+export const Hotel = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id"/>

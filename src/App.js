@@ -3,28 +3,32 @@ import React from 'react';
 import {Admin, Resource, ListGuesser, EditGuesser} from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 
-import {HotelList} from "./components/HotelList";
-import {HotelBookingList} from "./components/HotelBookingList";
+import {Hotel} from "./components/Hotel";
 
-import {HotelRoomList} from "./components/HotelRoomList";
-import {HotelRoomEdit} from "./components/HotelRoomEdit";
+import {HotelBookingList, HotelBookingEdit, HotelBookingCreate} from "./components/HotelBooking";
 
+import {HotelRoomList, HotelRoomEdit, HotelRoomCreate} from "./components/HotelRoom";
 
-import {RoomTypeList,RoomTypeEdit,RoomTypeCreate} from "./components/roomType";
+import {RoomTypeList, RoomTypeEdit, RoomTypeCreate} from "./components/RoomType";
 
+import PostIcon from '@material-ui/icons/Book';
+import UserIcon from '@material-ui/icons/Group';
 
+import Dashboard from './components/Dashboard'
 
 const dataProvider = jsonServerProvider('http://127.0.0.1:8000/api');
-//const dataProvider = jsonServerProvider('http://jsonplaceholder.typicode.com');
+
 const App = () =>
-    <Admin dataProvider={dataProvider}>
-        <Resource name="hotels" list={HotelList}/>
-        <Resource name="hotel-bookings" list={HotelBookingList}/>
-        <Resource name="hotel-rooms" list={HotelRoomList} edit={HotelRoomEdit}/>
-        <Resource name="room-types" list={RoomTypeList} edit={RoomTypeEdit} create={RoomTypeCreate}/>
+    <Admin dashboard={Dashboard} dataProvider={dataProvider}>
+        <Resource name="hotels" icon={PostIcon} list={Hotel}/>
+
+        <Resource name="hotel-bookings" icon={PostIcon} list={HotelBookingList} edit={HotelBookingEdit} create={HotelBookingCreate}/>
+
+        <Resource name="hotel-rooms" list={HotelRoomList} edit={HotelRoomEdit} create={HotelRoomCreate}/>
+
+        <Resource name="room-types" icon={PostIcon} list={RoomTypeList} edit={RoomTypeEdit} create={RoomTypeCreate}/>
     </Admin>
 
 
-//list hotels
 
 export default App;

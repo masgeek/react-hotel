@@ -39,7 +39,7 @@ export const RoomTypeEdit = props => (
 );
 
 export const RoomTypeCreate = props => (
-    <Create {...props}>
+    <Create {...props} title={<RoomTitle/>}>
         <SimpleForm>
             <TextInput source="room_type_name"/>
         </SimpleForm>
