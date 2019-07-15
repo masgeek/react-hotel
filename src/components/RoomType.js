@@ -5,9 +5,11 @@ import {
     SimpleForm,
     TextInput,
     DisabledInput,
+    NumberInput,
     List,
     Datagrid,
     TextField,
+    NumberField,
     DateField,
     EditButton,
     DeleteButton
@@ -22,8 +24,8 @@ export const RoomTypeList = props => (
         <Datagrid>
             <TextField source="id"/>
             <TextField source="room_type_name"/>
-            <DateField source="created_at"/>
-            <DateField source="updated_at"/>
+            <TextField source="currency"/>
+            <NumberField source="room_price" label={"Room/Night"}/>
             <EditButton/>
             <DeleteButton/>
         </Datagrid>

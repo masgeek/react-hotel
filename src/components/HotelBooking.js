@@ -17,7 +17,12 @@ import {
     ReferenceInput,
     DateInput,
     SelectInput,
-    DisabledInput
+    DisabledInput,
+    required,
+    number,
+    minValue,
+    email,
+    FormDataConsumer
 } from 'react-admin';
 
 export const HotelBookingList = props => (
@@ -27,7 +32,7 @@ export const HotelBookingList = props => (
             <ReferenceField source="hotelId" reference="hotels">
                 <TextField source="name"/>
             </ReferenceField>
-            <ReferenceField source="hotelRoomId" reference="hotel-rooms">
+            <ReferenceField source="room_id" reference="hotel-rooms">
                 <TextField source="room_name"/>
             </ReferenceField>
             <DateField source="start_date"/>
@@ -50,12 +55,15 @@ export const HotelBookingEdit = props => (
             <TextInput source="customer_names"/>
             <TextInput source="customer_email"/>
             <NumberInput source="total_nights"/>
-            <NumberInput source="total_cost"/>
-            <ReferenceInput source="hotelRoomId" reference="hotel-rooms">
-                <SelectInput optionText="room_name"/>
-            </ReferenceInput>
-            <ReferenceInput source="hotelId" reference="hotels">
+            <NumberInput source="total_cost" onChange={value => console.log(value)}/>
+
+            <ReferenceInput source="hotelId" reference="hotels" validate={required("Please select a hotel")}
+                            onChange={value => console.log(value)}>
                 <SelectInput optionText="name"/>
+            </ReferenceInput>
+
+            <ReferenceInput source="room_id" reference="hotel-rooms">
+                <SelectInput optionText="room_name"/>
             </ReferenceInput>
         </SimpleForm>
     </Edit>
@@ -65,19 +73,23 @@ export const HotelBookingEdit = props => (
 export const HotelBookingCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <DateInput source="start_date"/>
-            <DateInput source="end_date"/>
-            <TextInput source="customer_names"/>
-            <TextInput source="customer_email"/>
-            <NumberInput source="total_nights"/>
+
+            <DateInput source="start_date" validate={required()}/>
+            <DateInput source="end_date" validate={required()}/>
+            <TextInput source="customer_names" validate={required()}/>
+            <TextInput source="customer_email" validate={[required(), email("Enter a valid email address")]}/>
+            <NumberInput source="total_nights" validate={[required(), number(), minValue(1, "Minimum nights is 1")]}/>
             <DisabledInput source="total_cost"/>
-            <ReferenceInput source="hotelId" reference="hotels">
-                <SelectInput optionText="name"/>
+            <ReferenceInput source="hotelId" reference="hotels" validate={required("Please select a hotel")}
+                            onChange={value => console.log(value)}>
+                <SelectInput optionText="name" optionValue="name"/>
             </ReferenceInput>
 
-            <ReferenceInput source="hotelRoomId" reference="hotel-rooms">
+            <ReferenceInput source="room_id" reference="hotel-rooms"
+                            validate={required("Please select a hotel room")}>
                 <SelectInput optionText="room_name"/>
             </ReferenceInput>
+
 
         </SimpleForm>
     </Create>
