@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {List, Datagrid, TextField, DateField, EmailField, ImageField} from 'react-admin';
+import {List, Datagrid, TextField, DateField, EmailField, ImageField, EditButton} from 'react-admin';
 
 export const HotelList = props => (
     <List {...props}>
@@ -15,6 +15,7 @@ export const HotelList = props => (
             <TextField source="phone_number"/>
             <EmailField source="email"/>
             <ImageField source="image"/>
+            <EditButton/>
         </Datagrid>
     </List>
 );

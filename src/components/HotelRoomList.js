@@ -5,6 +5,7 @@ export const HotelRoomList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id"/>
+            
             <ReferenceField source="hotel_id" reference="hotels">
                 <TextField source="name"/>
             </ReferenceField>
