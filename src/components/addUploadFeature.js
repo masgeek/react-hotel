@@ -16,7 +16,9 @@ const convertFileToBase64 = file => new Promise((resolve, reject) => {
  * the `picture` sent property, with `src` and `title` attributes.
  */
 const addUploadFeature = requestHandler => (type, resource, params) => {
-    if (type === 'UPDATE' && resource === 'hotels') {
+
+    console.log(type);
+    if (type === 'UPDATE' || type === 'CREATE') {
 
         // notice that following condition can be true only when `<ImageInput source="pictures" />` component has parameter `multiple={true}`
         // if parameter `multiple` is false, then data.pictures is not an array, but single object

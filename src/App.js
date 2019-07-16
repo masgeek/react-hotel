@@ -3,7 +3,7 @@ import React from 'react';
 import {Admin, Resource, ListGuesser, EditGuesser} from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 
-import {HotelList, HotelEdit} from "./components/Hotel";
+import {HotelList, HotelEdit, HotelCreate} from "./components/Hotel";
 
 import {HotelBookingList, HotelBookingEdit, HotelBookingCreate} from "./components/HotelBooking";
 
@@ -26,7 +26,8 @@ const App = () =>
     <Admin dashboard={Dashboard} dataProvider={uploadCapableProvider}>
         <Resource name="hotels" icon={UserIcon}
                   list={HotelList}
-                  edit={HotelEdit}/>
+                  edit={HotelEdit}
+                  create={HotelCreate}/>
 
         <Resource name="hotel-bookings" icon={PostIcon}
                   list={HotelBookingList}
