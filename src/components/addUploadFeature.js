@@ -17,7 +17,6 @@ const convertFileToBase64 = file => new Promise((resolve, reject) => {
  */
 const addUploadFeature = requestHandler => (type, resource, params) => {
 
-    console.log(type);
     if (type === 'UPDATE' || type === 'CREATE') {
 
         // notice that following condition can be true only when `<ImageInput source="pictures" />` component has parameter `multiple={true}`
