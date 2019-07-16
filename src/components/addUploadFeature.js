@@ -41,6 +41,7 @@ const addUploadFeature = requestHandler => (type, resource, params) => {
                     },
                 }));
         } else if (params.data.pictures) {
+            // This will handle single file object
             const newPicture = params.data.pictures;
             const formerPictures = params.data.pictures;
 
