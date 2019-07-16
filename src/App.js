@@ -11,7 +11,7 @@ import {HotelRoomList, HotelRoomEdit, HotelRoomCreate} from "./components/HotelR
 
 import {RoomTypeList, RoomTypeEdit, RoomTypeCreate} from "./components/RoomType";
 
-import {RoomTypePriceList, RoomTypePriceEdit} from "./components/RoomTypePrice";
+import {RoomTypePriceList, RoomTypePriceEdit, RoomTypePriceCreate} from "./components/RoomTypePrice";
 
 import PostIcon from '@material-ui/icons/Book';
 import UserIcon from '@material-ui/icons/Group';
@@ -31,7 +31,7 @@ const App = () =>
 
         <Resource name="room-types" icon={PostIcon} list={RoomTypeList} edit={RoomTypeEdit} create={RoomTypeCreate}/>
 
-        <Resource name="room-type-prices" icon={PostIcon} list={RoomTypePriceList} edit={RoomTypePriceEdit}/>
+        <Resource name="room-type-prices" icon={PostIcon} list={RoomTypePriceList} edit={RoomTypePriceEdit} create={RoomTypePriceCreate}/>
     </Admin>
 
 

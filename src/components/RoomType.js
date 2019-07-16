@@ -16,7 +16,8 @@ import {
 } from 'react-admin';
 
 const RoomTitle = ({record}) => {
-    return <span>Room Type {record ? `"${record.room_type_name}"` : ''}</span>;
+    // return <span>Room Type {record ? `"${record.room_type_name}"` : ''}</span>;
+    return <span>Room Type Price</span>;
 };
 
 export const RoomTypeList = props => (
@@ -41,7 +42,7 @@ export const RoomTypeEdit = props => (
 );
 
 export const RoomTypeCreate = props => (
-    <Create {...props} title={<RoomTitle/>}>
+    <Create {...props} title={"Add room type"}>
         <SimpleForm>
             <TextInput source="room_type_name"/>
         </SimpleForm>

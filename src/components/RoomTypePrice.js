@@ -17,10 +17,13 @@ import {
     ReferenceInput,
     SelectInput,
     required,
+    number,
+    minValue,
+    maxValue
 } from 'react-admin';
 
-const RoomTitle = ({record}) => {
-    return <span>Room Type {record ? `"${record.room_type_name}"` : ''}</span>;
+const RoomPriceTitle = ({record}) => {
+    return <span>Room Type {record ? `"${record.room_type.room_type_name}"` : ''} Price</span>;
 };
 
 export const RoomTypePriceList = props => (
@@ -41,22 +44,25 @@ export const RoomTypePriceList = props => (
 );
 
 export const RoomTypePriceEdit = props => (
-    <Edit {...props}>
+    <Edit title={<RoomPriceTitle/>} {...props}>
         <SimpleForm>
-            <TextInput source="id"/>
-            <ReferenceInput source="room_type_id" reference="room-types"><SelectInput
-                optionText="room_type_name"/>
+            <ReferenceInput source="room_type_id" reference="room-types">
+                <SelectInput optionText="room_type_name"/>
             </ReferenceInput>
-            <TextInput source="currency"/>
             <NumberInput source="room_price"/>
+            <DisabledInput source="currency"/>
         </SimpleForm>
     </Edit>
 );
 
 export const RoomTypePriceCreate = props => (
-    <Create {...props} title={<RoomTitle/>}>
+    <Create {...props} title={"Add new room"}>
         <SimpleForm>
-            <TextInput source="room_type_name"/>
+            <ReferenceInput source="room_type_id" reference="room-types" validate={required()}>
+                <SelectInput optionText="room_type_name"/>
+            </ReferenceInput>
+            <NumberInput source="room_price" validate={[required(), number(), minValue(1)]}/>
+            <DisabledInput source="currency" defaultValue={"USD"}/>
         </SimpleForm>
     </Create>
 );
