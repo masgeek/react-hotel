@@ -1,6 +1,7 @@
 // in src/App.js
 import React from 'react';
 import {Admin, Resource, ListGuesser, EditGuesser} from 'react-admin';
+
 import jsonServerProvider from 'ra-data-json-server';
 
 import {HotelList, HotelEdit, HotelCreate} from "./components/Hotel";
@@ -24,15 +25,15 @@ const uploadCapableProvider = addUploadFeature(dataProvider);
 
 const App = () =>
     <Admin dashboard={Dashboard} dataProvider={uploadCapableProvider}>
-        <Resource name="hotels" icon={UserIcon}
-                  list={HotelList}
-                  edit={HotelEdit}
-                  create={HotelCreate}/>
-
         <Resource name="hotel-bookings" icon={PostIcon}
                   list={HotelBookingList}
                   edit={HotelBookingEdit}
                   create={HotelBookingCreate}/>
+
+        <Resource name="hotels" icon={UserIcon}
+                  list={HotelList}
+                  edit={HotelEdit}
+                  create={HotelCreate}/>
 
         <Resource name="hotel-rooms"
                   list={HotelRoomList}

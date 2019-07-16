@@ -3,14 +3,12 @@ import {
     Create,
     Edit,
     SimpleForm,
-    TextInput,
     DisabledInput,
     NumberInput,
     List,
     Datagrid,
     TextField,
     NumberField,
-    DateField,
     EditButton,
     DeleteButton,
     ReferenceField,
@@ -19,7 +17,6 @@ import {
     required,
     number,
     minValue,
-    maxValue
 } from 'react-admin';
 
 const RoomPriceTitle = ({record}) => {

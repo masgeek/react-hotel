@@ -12,7 +12,8 @@ import {
     SimpleForm,
     TextInput,
     ReferenceInput,
-    SelectInput
+    SelectInput,
+    ImageInput
 } from 'react-admin';
 
 const HotelRoomTitle = ({record}) => {
@@ -50,9 +51,10 @@ export const HotelRoomEdit = props => (
             <ReferenceInput source="room_type_id" reference="room-types">
                 <SelectInput optionText="room_type_name"/>
             </ReferenceInput>
-
             <TextInput source="room_name"/>
-            <TextInput source="image"/>
+            <ImageInput source="pictures" label="Room Picture" accept="image/*" multiple={false}>
+                <ImageField source="src" title="title"/>
+            </ImageInput>
         </SimpleForm>
     </Edit>
 );
@@ -68,7 +70,9 @@ export const HotelRoomCreate = props => (
             </ReferenceInput>
 
             <TextInput source="room_name"/>
-            <TextInput source="image"/>
+            <ImageInput source="pictures" label="Room Picture" accept="image/*" multiple={false}>
+                <ImageField source="src" title="title"/>
+            </ImageInput>
         </SimpleForm>
     </Create>
 );

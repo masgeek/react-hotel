@@ -21,8 +21,7 @@ import {
     required,
     number,
     minValue,
-    email,
-    FormDataConsumer
+    email
 } from 'react-admin';
 
 export const HotelBookingList = props => (
@@ -38,7 +37,7 @@ export const HotelBookingList = props => (
             <DateField source="start_date"/>
             <DateField source="end_date"/>
             <TextField source="customer_names"/>
-            <TextField source="customer_email"/>
+            <EmailField source="customer_email"/>
             <NumberField source="total_nights"/>
             <NumberField source="total_cost"/>
             <EditButton/>
@@ -80,8 +79,7 @@ export const HotelBookingCreate = props => (
             <TextInput source="customer_email" validate={[required(), email("Enter a valid email address")]}/>
             <NumberInput source="total_nights" validate={[required(), number(), minValue(1, "Minimum nights is 1")]}/>
             <DisabledInput source="total_cost"/>
-            <ReferenceInput source="hotelId" reference="hotels" validate={required("Please select a hotel")}
-                            onChange={value => console.log(value)}>
+            <ReferenceInput source="hotelId" reference="hotels" validate={required("Please select a hotel")}>
                 <SelectInput optionText="name" optionValue="name"/>
             </ReferenceInput>
 
